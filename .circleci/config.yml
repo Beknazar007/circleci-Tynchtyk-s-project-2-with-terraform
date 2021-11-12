@@ -8,6 +8,11 @@ workflows:
       - terraform/validate:
           checkout: true
           context: dev_server_cred
+      - terraform/init:
+          checkout: true
+          context: dev_server_cred
+          requires:
+            - terraform/validate
           
       - terraform/plan:
           checkout: true
