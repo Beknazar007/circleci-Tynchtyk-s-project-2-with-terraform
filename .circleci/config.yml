@@ -15,6 +15,12 @@ workflows:
           persist-workspace: true
           requires:
             - terraform/validate
+      - terraform/destroy:
+          checkout: true
+          context: dev_server_cred
+          requires:
+            - terraform/validate
+            - terraform/plan
       - hold:
           type: approval
           requires:
