@@ -5,6 +5,10 @@ terraform {
       version = "3.53.0"
     }
   }
+  backend "gcs" {
+    bucket  = "beki-my-bucket-for-circleci"
+    prefix  = "terraform/state"
+  }
 }
 
 provider "google" {

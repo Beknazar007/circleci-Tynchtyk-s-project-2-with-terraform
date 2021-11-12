@@ -3,7 +3,7 @@ version: 2.1
 jobs: 
   build:
     docker: 
-      - image: hashicorp/terraform   # this terraform image to run our project 
+      - image: hashicorp/terraform   
     steps: 
       - checkout 
       - run:
@@ -12,8 +12,12 @@ jobs:
       - run:
           name: "plan"
           command: terraform plan
+      - store-artifacts:
+          path: terraform.tfstate
       
-      
+      - run:
+          name: "apply"
+          command: terraform apply --auto-approve
   build2:
     docker: 
       - image: hashicorp/terraform   
@@ -25,17 +29,13 @@ jobs:
       - run:
           name: "plan"
           command: terraform plan
-      - run:
-          name: "Destroy"
-          command: terraform destroy --auto-approve
-          # - run:
-      #     name: "apply"
-      #     command: terraform apply --auto-approve 
+      
+      
 workflows: 
   build:
     jobs:
       - build:
-          context: dev_server_cred
+          context: ENV_CRED_GCP
       - hold:
           type: approval 
           requires:
