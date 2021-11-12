@@ -1,11 +1,11 @@
 variable "project_id" {
   type    = string
-  default = "playground-s-11-16e380d1"
+  default = "unified-chess-331509"
 }
 
 variable "credentials_file_path" {
   type    = string
-  default = "playground-s-11-16e380d1-19d8f07c44ac.json"
+  default = "unified-chess-331509-aa2bd585a510.json"
 }
 
 variable "region" {
