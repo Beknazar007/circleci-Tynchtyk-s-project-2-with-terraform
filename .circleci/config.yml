@@ -12,9 +12,7 @@ jobs:
       - run:
           name: "plan"
           command: terraform plan
-      - run:
-          name: "destroy"
-          command: terraform destroy --auto-approve 
+      
       
   build2:
     docker: 
