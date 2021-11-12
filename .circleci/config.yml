@@ -26,8 +26,11 @@ jobs:
           name: "plan"
           command: terraform plan
       - run:
-          name: "apply"
-          command: terraform apply --auto-approve 
+          name: "Destroy"
+          command: terraform destroy
+          # - run:
+      #     name: "apply"
+      #     command: terraform apply --auto-approve 
 workflows: 
   build:
     jobs:
